@@ -1,0 +1,108 @@
+/*font size*/
+.fn-16 {
+    -fx-font-size: 16px;
+}
+
+.fn-18 {
+    -fx-font-size: 18px;
+    -fx-font-family: Arial;
+}
+
+.fn-system-18 {
+     -fx-font-size: 18px;
+     -fx-font-family: System;
+ }
+
+.fn-20 {
+    -fx-font-size: 24px;
+    -fx-font-family: Arial;
+}
+
+.fn-system-20 {
+    -fx-font-size: 22px;
+    -fx-font-family: System;
+}
+
+.fn-32 {
+    -fx-font-size: 32px;
+}
+
+.fn-48 {
+    -fx-font-size: 48px;
+}
+
+.fn-weight {
+    -fx-font-weight: bold;
+}
+
+/*text color*/
+.fill-white {
+    -fx-fill: #FFFFFF;
+    -fx-text-fill: #FFFFFF;
+}
+
+.fill-blue {
+    -fx-fill: #0283DF;
+    -fx-text-fill: #0283DF;
+}
+
+.fill-blue-2 {
+    -fx-fill: #0007F3;
+    -fx-text-fill: #0007F3;
+}
+
+/*background color*/
+.back-blue {
+    -fx-background-color: #0283DF;
+}
+
+.back-while {
+    -fx-background-color: #FFFFFF;
+}
+
+.back-gray {
+    -fx-background-color: #CDCDCD;
+}
+
+.back-transparent {
+    -fx-background-color: transparent;
+}
+
+.back-black {
+    -fx-background-color: black;
+}
+
+/*Button*/
+.button1:hover {
+    -fx-background-color: #F2F2F2;
+    -fx-text-fill: #0283DF;
+}
+
+.line-color {
+    -fx-stroke: #0007F3;
+}
+
+/*JFXTextField*/
+.text-field {
+    -fx-border-width: 0px 0px 1px 0px;
+    -fx-border-color: black;
+}
+
+.text-field: hover {
+    -fx-border-width: 0px 0px 2px 0px;
+}
+
+/*button*/
+.button
+{
+    -fx-background-color : #F3F3F3;
+}
+.button:hover
+{
+    -fx-background-color : #A1C1F4;
+}
+.button:pressed
+{
+    -fx-background-color : #73A3EF;
+}
+

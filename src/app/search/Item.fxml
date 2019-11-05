@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="CENTER" styleClass="hbox" stylesheets="@searchStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.search.ItemController">
+   <children>
+      <VBox alignment="CENTER_LEFT" prefHeight="73.0" prefWidth="231.0" HBox.hgrow="ALWAYS">
+         <children>
+            <Label fx:id="wordsLB" focusTraversable="false" text="1. word" textFill="#1400ff">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets right="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="ipaLB" text="/xxx/" />
+            <Label fx:id="meanLB" focusTraversable="false" text="aaaaaaaaaaaaaaaaaaaaa">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+         </children>
+         <HBox.margin>
+            <Insets left="10.0" />
+         </HBox.margin>
+      </VBox>
+      <JFXButton focusTraversable="false" onAction="#onViewDetail" styleClass="jfxBtn" text="Chi tiết">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <HBox.margin>
+            <Insets left="10.0" right="10.0" />
+         </HBox.margin>
+      </JFXButton>
+      <FontAwesomeIconView glyphName="VOLUME_UP" onMouseClicked="#onListenAudio" size="20">
+         <HBox.margin>
+            <Insets left="10.0" right="10.0" />
+         </HBox.margin>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </FontAwesomeIconView>
+      <FontAwesomeIconView glyphName="TRASH_ALT" onMouseClicked="#onDelete" size="20">
+         <HBox.margin>
+            <Insets left="10.0" right="10.0" />
+         </HBox.margin>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </FontAwesomeIconView>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</HBox>

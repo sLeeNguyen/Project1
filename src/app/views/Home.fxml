@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="672.0" prefWidth="980.0" stylesheets="@../../stylesheet/homestyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="799.0" prefWidth="167.0" styleClass="back-blue">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="87.0" prefWidth="227.0" styleClass="back-blue">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="100.0" prefWidth="167.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <ImageView fitHeight="84.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../images/logo2.png" />
+                                 </image>
+                              </ImageView>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" English" wrappingWidth="111.634765625">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                                 <styleClass>
+                                    <String fx:value="fill-white" />
+                                    <String fx:value="fn-weight" />
+                                 </styleClass>
+                              </Text>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="80.0" prefWidth="213.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="62.0" prefWidth="305.0" text="Thêm" HBox.hgrow="ALWAYS">
+                           <graphic>
+                              <ImageView fitHeight="54.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../images/add5.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <padding>
+                              <Insets right="20.0" />
+                           </padding>
+                           <font>
+                              <Font name="Arial" size="21.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="fn-16" />
+                              <String fx:value="back-transparent" />
+                              <String fx:value="button1" />
+                              <String fx:value="fn-weight" />
+                           </styleClass>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="80.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="62.0" prefWidth="342.0" text="Sửa/xóa" HBox.hgrow="ALWAYS">
+                           <graphic>
+                              <ImageView fitHeight="54.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../images/pen2.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <styleClass>
+                              <String fx:value="fn-16" />
+                              <String fx:value="back-transparent" />
+                              <String fx:value="button1" />
+                              <String fx:value="fn-weight" />
+                           </styleClass>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="110.0" prefHeight="80.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="62.0" prefWidth="380.0" text="Kiểm tra" HBox.hgrow="ALWAYS">
+                           <graphic>
+                              <ImageView fitHeight="54.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../images/test2.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <styleClass>
+                              <String fx:value="fn-16" />
+                              <String fx:value="back-transparent" />
+                              <String fx:value="button1" />
+                              <String fx:value="fn-weight" />
+                           </styleClass>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="210.0" prefHeight="80.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="62.0" prefWidth="397.0" text="Cài đặt" HBox.hgrow="ALWAYS">
+                           <graphic>
+                              <ImageView fitHeight="54.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../images/logo.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <styleClass>
+                              <String fx:value="fn-16" />
+                              <String fx:value="back-transparent" />
+                              <String fx:value="button1" />
+                              <String fx:value="fn-weight" />
+                           </styleClass>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <effect>
+                  <Blend>
+                     <topInput>
+                        <DropShadow />
+                     </topInput>
+                  </Blend>
+               </effect>
+            </VBox>
+         </children>
+      </HBox>
+   </left>
+   <top>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="25.0" fitWidth="32.0" layoutX="249.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/search.png" />
+               </image>
+            </ImageView>
+            <HBox layoutY="-13.0" prefHeight="71.0" prefWidth="167.0" styleClass="back-blue" />
+            <TextField layoutX="282.0" layoutY="9.0" prefHeight="29.0" prefWidth="269.0" promptText="Tìm kiếm nhanh">
+               <styleClass>
+                  <String fx:value="back-transparent" />
+                  <String fx:value="text-field" />
+               </styleClass>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+         </children>
+      </AnchorPane>
+   </top>
+</BorderPane>

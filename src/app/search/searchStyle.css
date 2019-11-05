@@ -1,0 +1,47 @@
+.fontAweSomeIcon {
+    -fx-font-size: 30px;
+    -fx-fill: #7A7A7A;
+}
+
+.fontAweSomeIcon1 {
+    -fx-font-size: 20px;
+    -fx-text-fill: #7A7A7A;
+}
+
+.btn1 {
+    -fx-background-radius: 50px;
+    -fx-border-width: 1px;
+    -fx-border-radius: 50px;
+    -fx-border-color: #2D75E8;
+}
+
+.btn1:hover {
+    -fx-background-radius: 50px;
+}
+
+.jfxBtn {
+    -fx-background-radius: 50px;
+    -fx-border-width: 1px;
+    -fx-border-radius: 50px;
+    -fx-border-color: black;
+}
+
+.jfxBtn:hover {
+    -fx-text-fill: #0283DF;
+    -fx-border-color: #0283DF;
+}
+
+.hbox {
+    -fx-border-width: 0px 0px 2px 0px;
+    -fx-border-color: #A6A6A6;
+}
+
+.hbox:hover {
+    -fx-background-radius: 5px;
+    -fx-background-color: #CDCDCD;
+}
+
+.hbox:pressed {
+    -fx-background-radius: 5px;
+    -fx-background-color: #CDCDCD;
+}

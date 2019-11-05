@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="vbLevel" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="back-transparent" stylesheets="@../../../stylesheet/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.practice.help.HelpLevelController">
+   <children>
+      <Label text="Chọn mức độ hỗ trợ" textFill="WHITE">
+         <font>
+            <Font size="30.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="20.0" />
+         </VBox.margin>
+      </Label>
+      <HBox alignment="CENTER" prefHeight="60.0" prefWidth="350.0" styleClass="cursor-hand">
+         <children>
+            <JFXButton fx:id="jfxBtnLevel1" focusTraversable="false" onAction="#onSetLevel" prefHeight="50.0" prefWidth="287.0" styleClass="jfx-btn-level" text="Mức 1" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="55.0" prefHeight="60.0" prefWidth="350.0" styleClass="cursor-hand">
+         <children>
+            <JFXButton fx:id="jfxBtnLevel2" focusTraversable="false" onAction="#onSetLevel" prefHeight="50.0" prefWidth="287.0" styleClass="jfx-btn-level" text="Mức 2" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="55.0" prefHeight="60.0" prefWidth="350.0" styleClass="cursor-hand">
+         <children>
+            <JFXButton fx:id="jfxBtnLevel3" focusTraversable="false" onAction="#onSetLevel" prefHeight="50.0" prefWidth="287.0" styleClass="jfx-btn-level" text="Mức 3" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="130.0" prefHeight="60.0" prefWidth="350.0" styleClass="cursor-hand">
+         <children>
+            <JFXButton fx:id="jfxBtnLevel4" focusTraversable="false" onAction="#onSetLevel" prefHeight="50.0" prefWidth="287.0" styleClass="jfx-btn-level" text="Mức 4" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+      </HBox>
+      <Label fx:id="lbSuccess" focusTraversable="false" styleClass="back-transparent" textFill="WHITE" visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+   <padding>
+      <Insets bottom="20.0" />
+   </padding>
+</VBox>
