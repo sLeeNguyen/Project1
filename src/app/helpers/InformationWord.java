@@ -14,7 +14,8 @@ public class InformationWord {
 
     public InformationWord() {}
 
-    public InformationWord(String word, String mean, String ipa, String suggest, String hashtag, String classify, Date date) {
+    public InformationWord(int word_id, String word, String mean, String ipa, String suggest, String hashtag, String classify, Date date) {
+        this.word_id = word_id;
         this.word = word;
         this.mean = mean;
         this.ipa = ipa;
