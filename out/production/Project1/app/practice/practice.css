@@ -1,0 +1,48 @@
+.jfx-btn-check {
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-background-color: #58a700;
+    -fx-opacity: 0.7;
+    -fx-border-width: 0 0 4;
+    -fx-border-color: #538a00;
+}
+
+.jfx-btn-check:hover {
+    -fx-background-color: #58a700;
+    -fx-opacity: 1;
+    -fx-translate-y: -5;
+    -fx-scale-y: 1.1;
+}
+
+.jfx-btn-return {
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-background-color: transparent;
+    -fx-opacity: 0.7;
+    -fx-text-fill: #afafaf;
+    -fx-border-width: 2 2 4 2;
+    -fx-border-color: #E5E5E5;
+}
+
+.jfx-btn-return:hover {
+    -fx-border-color: #CECECE;
+    -fx-background-color: #E5E5E5;
+    -fx-translate-y: -5;
+    -fx-scale-y: 1.1;
+    -fx-text-fill: #7D7D7D;
+}
+
+.jfx-btn-incorrect {
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-background-color: #FF5252;
+    -fx-text-fill: white;
+    -fx-border-width: 0 0 4;
+    -fx-border-color: #EC0C1C;
+}
+
+.jfx-btn-incorrect:hover {
+    -fx-border-color: #EA2B57;
+    -fx-translate-y: -5;
+    -fx-scale-y: 1.1;
+}

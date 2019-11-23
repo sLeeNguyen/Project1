@@ -103,7 +103,7 @@ public class WordDetailController implements Initializable {
         fileImg = null;
         fileAudio = null;
         try {
-            imageDefault = new Image(new FileInputStream("src\\images\\noImage.png"));
+            imageDefault = new Image(new FileInputStream("src/images/noImage.png"));
         } catch (FileNotFoundException e) {
             ca.alertErrorMessage("Error: " + e.getMessage());
             e.printStackTrace();
@@ -136,7 +136,7 @@ public class WordDetailController implements Initializable {
     }
 
     void showImage() {
-        String sql = "SELECT pimage FROM Information WHERE word=\'" + wordLB.getText() + "\'";
+        String sql = "SELECT pimage FROM Information WHERE word_id=\'" + iw.getWord_id() + "\'";
         Image image1 = imageDefault;
         try {
             PreparedStatement pstm = conn.prepareStatement(sql);
@@ -212,7 +212,7 @@ public class WordDetailController implements Initializable {
 
         try {
             if (fileImg != null) {
-                sql = "UPDATE Information SET pimage=? WHERE word=\'" + wordLB.getText() + "\'";
+                sql = "UPDATE Information SET pimage=? WHERE word_id=\'" + iw.getWord_id() + "\'";
                 pstm = conn.prepareStatement(sql);
 
                 FileInputStream fis = new FileInputStream(fileImg);
@@ -220,7 +220,7 @@ public class WordDetailController implements Initializable {
                 pstm.executeUpdate();
             }
             if (fileAudio != null) {
-                sql = "UPDATE Information SET audio=? WHERE word=\'" + wordLB.getText() + "\'";
+                sql = "UPDATE Information SET audio=? WHERE word_id=\'" + iw.getWord_id() + "\'";
                 pstm = conn.prepareStatement(sql);
 
                 FileInputStream fis = new FileInputStream(fileAudio);
@@ -277,9 +277,9 @@ public class WordDetailController implements Initializable {
         InputStream is;
         try {
             if (fileAudio == null || isRootPaneDetail) {
-                String sql = "SELECT audio FROM Information WHERE word=?";
+                String sql = "SELECT audio FROM Information WHERE word_id=?";
                 PreparedStatement pstm = conn.prepareStatement(sql);
-                pstm.setString(1, wordsTF.getText());
+                pstm.setInt(1, iw.getWord_id());
                 ResultSet rs = pstm.executeQuery();
                 if (rs.next()) {
                     is = rs.getBinaryStream(1);

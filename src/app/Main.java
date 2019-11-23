@@ -12,12 +12,14 @@ import java.io.IOException;
 public class Main extends Application {
 
     public static void main(String[] args) {
+        System.out.println("begin");
         launch(args);
+        System.out.println("done"); // update here
     }
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/app/home/Home.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/app/practice/Practice.fxml"));
 
         Scene scene = new Scene(root);
 

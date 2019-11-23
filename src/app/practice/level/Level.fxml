@@ -89,18 +89,6 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </VBox.margin>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="60.0" prefWidth="350.0" styleClass="cursor-hand">
-         <children>
-            <JFXButton fx:id="jfxBtnLevel7" focusTraversable="false" onAction="#onSetLevel" prefHeight="50.0" prefWidth="287.0" styleClass="jfx-btn-level" text="Mức 7" textFill="WHITE">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </JFXButton>
-         </children>
-         <VBox.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </VBox.margin>
-      </HBox>
       <Label fx:id="lbSuccess" focusTraversable="false" styleClass="back-transparent" textFill="WHITE" visible="false">
          <font>
             <Font size="18.0" />

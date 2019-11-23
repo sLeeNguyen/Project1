@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="rootPane" onMouseDragged="#dragged" onMousePressed="#pressed" style="-fx-border-color: #CDCDCD; -fx-border-width: 3;" stylesheets="@../../stylesheet/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.add_word.AddWordController">
+<BorderPane fx:id="rootPane" style="-fx-border-color: #CDCDCD; -fx-border-width: 3;" stylesheets="@../../stylesheet/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.add_word.AddWordController">
     <center>
       <StackPane>
          <children>
@@ -206,7 +206,7 @@
       </StackPane>
     </center>
     <top>
-        <HBox alignment="CENTER" prefHeight="93.0" prefWidth="524.0" styleClass="back-blue" BorderPane.alignment="CENTER">
+        <HBox alignment="CENTER" onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="93.0" prefWidth="524.0" styleClass="back-blue" BorderPane.alignment="CENTER">
          <children>
             <FontAwesomeIconView fill="WHITE" glyphName="FILE_WORD_ALT" size="35">
                <HBox.margin>

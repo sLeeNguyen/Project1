@@ -49,7 +49,7 @@ public class ItemController implements Initializable {
 
     void setData() {
         wordsLB.setText(iw.getWord());
-        ipaLB.setText("/" + iw.getIpa() + "/");
+        ipaLB.setText(iw.getIpa());
         meanLB.setText(iw.getMean());
     }
 
@@ -58,14 +58,15 @@ public class ItemController implements Initializable {
         String sql = "SELECT audio FROM Information WHERE word_id=" + iw.getWord_id();
         try {
             ResultSet rs = conn.prepareStatement(sql).executeQuery();
+            InputStream is = null;
             if (rs.next()) {
-                InputStream is = rs.getBinaryStream(1);
-                if (is != null) {
-                    Player player = new Player(is);
-                    player.play();
-                }
+                is = rs.getBinaryStream(1);
+                if (is == null) return;
+                Player player = new Player(is);
+                player.play();
             }
-        } catch (SQLException | JavaLayerException e) {
+            is.close();
+        } catch (SQLException | JavaLayerException | IOException e) {
             e.printStackTrace();
         }
     }

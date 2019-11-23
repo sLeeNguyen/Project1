@@ -3,6 +3,7 @@ package app.add_word;
 import app.helpers.CheckAndAlert;
 import app.helpers.HelpScene;
 import app.helpers.database.DatabaseHandler;
+import app.helpers.tts.TextToSpeech;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -31,6 +32,7 @@ public class AddWordController implements Initializable {
     private static DatabaseHandler dh = DatabaseHandler.getInstance();
     private static CheckAndAlert ca = CheckAndAlert.getInstance();
     private static Connection conn = dh.getConnection();
+    private static TextToSpeech tts = TextToSpeech.getInstance();
 
     @FXML
     private TextField wordTF;
@@ -71,6 +73,7 @@ public class AddWordController implements Initializable {
     private File fileImg;
     private File fileAudio;
     private Date date;
+    private String pathAudioName;
 
 //  ===================================================================================================
 
@@ -81,6 +84,7 @@ public class AddWordController implements Initializable {
         fileImg = null;
         fileAudio = null;
         date = new Date(System.currentTimeMillis());
+        pathAudioName = null;
     }
 
     private void setClassifyCB() {
@@ -106,8 +110,8 @@ public class AddWordController implements Initializable {
             ca.alertErrorMessage("Bạn cần nhập nghĩa của từ/cụm từ!");
             return;
         }
-        if (ca.isNotValid(ipa)) {
-            ca.alertErrorMessage("Bạn cần nhập phiên âm!");
+        if (!ipa.matches("^/.+/$") && !ipa.isEmpty()) {
+            ca.alertErrorMessage("Phiên âm không hợp lệ");
             return;
         }
         if (ca.isHashtagNotValid(hashTag)) {
@@ -116,38 +120,49 @@ public class AddWordController implements Initializable {
         }
 
         // add to database
-        String sql = "INSERT dbo.Information(word, mean, ipa, suggest, classify, pimage, audio, dateWord) Values(?, ?, ?, ?, ?, ?, ?, ?)";
+        FileInputStream fis = null;
+        String sql = "INSERT dbo.Information(word, mean, ipa, suggest, hashtag, classify, pimage, audio, dateWord) Values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1, word);
             pstm.setString(2, mean);
             pstm.setString(3, ipa);
             pstm.setString(4, suggest);
-            pstm.setString(5, classify);
-            pstm.setDate(8, date);
+            pstm.setString(5, hashTag);
+            pstm.setString(6, classify);
+            pstm.setDate(9, date);
 
             // set audio
             if (fileAudio != null) {
-                FileInputStream fis = new FileInputStream(fileAudio);
-                pstm.setBinaryStream(7, fis, fileAudio.length());
+                fis = new FileInputStream(fileAudio);
+                pstm.setBinaryStream(8, fis, fileAudio.length());
+            }
+            else {
+                String msg = "Bạn có muốn hệ thống tự động tạo file phát âm?";
+                if (ca.alertConfirmMessage(msg)) { // auto create audio file, save as audio.mp3 and load into database
+                    tts.SoundCreator(word);
+                    File fileTTS = new File("audio.mp3");
+                    fis = new FileInputStream(fileTTS);
+                    pstm.setBinaryStream(8, fis, fileTTS.length());
+                } else {
+                    pstm.setBinaryStream(8, null);
+                }
+            }
+
+            // set pimage
+            if (fileImg != null) {
+                fis = new FileInputStream(fileImg);
+                pstm.setBinaryStream(7, fis, fileImg.length());
             }
             else {
                 pstm.setBinaryStream(7, null);
             }
 
-            // set pimage
-            if (fileImg != null) {
-                FileInputStream fis = new FileInputStream(fileImg);
-                pstm.setBinaryStream(6, fis, fileImg.length());
-            }
-            else {
-                pstm.setBinaryStream(6, null);
-            }
-
             pstm.executeUpdate();
             ca.alertSuccessMessage("Thêm thành công!");
+            if (fis != null) fis.close();
 
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             ca.alertErrorMessage("Thêm thất bại! \nError: " + e.getMessage());
             e.printStackTrace();
         }
@@ -175,11 +190,12 @@ public class AddWordController implements Initializable {
 
     @FXML
     void onChooseAudio(MouseEvent event) {
-        FileChooser.ExtensionFilter imgFilter = new FileChooser.ExtensionFilter("Images Files", "*.mp3", "*.wav");
+        FileChooser.ExtensionFilter audioFilter = new FileChooser.ExtensionFilter("Audio Files", "*.mp3", "*.wav");
         FileChooser fc = new FileChooser();
 
+        fc.setInitialDirectory(new File("./audio"));
         fc.setTitle("Chọn file phát âm");
-        fc.getExtensionFilters().add(imgFilter);
+        fc.getExtensionFilters().add(audioFilter);
         fileAudio = fc.showOpenDialog(null);
 
         if (fileAudio != null) {
@@ -193,7 +209,7 @@ public class AddWordController implements Initializable {
         FileChooser.ExtensionFilter imgFilter = new FileChooser.ExtensionFilter("Images Files", "*.jpg", "*.png", "*.jpeg", "*.ico");
         FileChooser fc = new FileChooser();
 
-        fc.setInitialDirectory(new File("E:\\Project1\\src\\images"));
+        fc.setInitialDirectory(new File("./src/images"));
         fc.setTitle("Chọn hình ảnh");
         fc.getExtensionFilters().add(imgFilter);
         fileImg = fc.showOpenDialog(null);
@@ -205,7 +221,7 @@ public class AddWordController implements Initializable {
     }
 
     @FXML
-    void onShowImage(MouseEvent event) {
+    void onShowImage(MouseEvent event) throws FileNotFoundException {
         hboxInfor.setVisible(false);
         apView.setVisible(true);
         Image image;
@@ -213,8 +229,7 @@ public class AddWordController implements Initializable {
         if (fileImg != null) {
             image = new Image(fileImg.toURI().toString());
         } else {
-            InputStream is = getClass().getResourceAsStream("../../images/noImage.png");
-            image = new Image(is);
+            image = new Image(new File("src/images/noImage.png").toURI().toString());
         }
         imageView.setImage(image);
     }
@@ -226,14 +241,17 @@ public class AddWordController implements Initializable {
     }
 
     @FXML
-    void onPlayAudio(MouseEvent event) {
+    void onPlayAudio(MouseEvent event) throws IOException {
         if (fileAudio != null) {
-            InputStream music;
+            InputStream music = null;
             try {
                 music = new FileInputStream(fileAudio);
                 Player player = new Player(music);
                 player.play();
-            } catch (FileNotFoundException | JavaLayerException e) {
+                music.close();
+            } catch (JavaLayerException e) {
+                ca.alertErrorMessage("Error: " + e.getMessage());
+                if (music != null) music.close();
                 e.printStackTrace();
             }
         }

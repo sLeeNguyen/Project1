@@ -12,16 +12,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 
 import java.io.*;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -50,19 +47,34 @@ public class SearchController implements Initializable {
         setClassifyCB();
     }
 
+    @FXML
+    void initializeListener(KeyEvent event) {
+        listItemVBox.getChildren().clear();
+        String sql = "SELECT TOP 50 word_id, word, mean, ipa, suggest, hashtag, classify, dateWord FROM Information WHERE word LIKE '" + wordsJFX.getText() + "%'";
+
+        try {
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            while(rs.next()) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/search/Item.fxml"));
+                Node node = loader.load();
+                ItemController itemController = loader.getController();
+                InformationWord iw = new InformationWord(rs.getInt(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),
+                        rs.getDate(8));
+
+                itemController.setIw(iw);
+
+                listItemVBox.getChildren().add(node);
+            }
+        } catch (SQLException | IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     private void setClassifyCB() {
         classifyCB.getItems().addAll("none" ,"V", "N", "Adj", "Vp", "Np", "idioms", "Clause");
         classifyCB.setValue("none");
-    }
-
-    @FXML
-    void dragged(MouseEvent event) {
-        hs.dragged(event);
-    }
-
-    @FXML
-    void pressed(MouseEvent event) {
-        hs.pressed(event);
     }
 
     private String getSQL() {
@@ -72,7 +84,7 @@ public class SearchController implements Initializable {
         LocalDate localDate = dateDP.getValue();
         boolean flag = false;
 
-        String sql = "SELECT word_id, word, mean, ipa, suggest, hashtag, classify, dateWord FROM Information WHERE";
+        String sql = "SELECT TOP 50 word_id, word, mean, ipa, suggest, hashtag, classify, dateWord FROM Information WHERE";
 
         if (!word.isEmpty()) {
             sql += " word=\'" + word.toLowerCase() + "\' AND";
@@ -87,7 +99,7 @@ public class SearchController implements Initializable {
             flag = true;
         }
         if (localDate != null) {
-            sql += " dateWord=\'" + ((TextField)dateDP.getEditor()).getText()+ "\' AND";
+            sql += " dateWord=\'" + (dateDP.getEditor()).getText()+ "\' AND";
             flag = true;
         }
 
@@ -128,6 +140,7 @@ public class SearchController implements Initializable {
                 listItemVBox.getChildren().add(node);
             }
             rs.close();
+            pstm.close();
 
         } catch (SQLException | IOException e) {
             ca.alertErrorMessage("Error: " + e.getMessage());
@@ -138,5 +151,16 @@ public class SearchController implements Initializable {
     @FXML
     void onBack(MouseEvent event) throws IOException {
         hs.changeScene(event, "/app/home/Home.fxml");
+    }
+
+    // Move window
+    @FXML
+    void dragged(MouseEvent event) {
+        hs.dragged(event);
+    }
+
+    @FXML
+    void pressed(MouseEvent event) {
+        hs.pressed(event);
     }
 }

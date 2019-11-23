@@ -20,7 +20,7 @@
 
 <StackPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.search_word_detail.WordDetailController">
    <children>
-      <BorderPane fx:id="rootPaneDetail" onMouseDragged="#dragged" onMousePressed="#pressed" style="-fx-border-color: #2D75E8; -fx-border-width: 3;" stylesheets="@../../stylesheet/style.css">
+      <BorderPane fx:id="rootPaneDetail" style="-fx-border-color: #2D75E8; -fx-border-width: 3;" stylesheets="@../../stylesheet/style.css">
           <center>
               <AnchorPane>
                   <children>
@@ -220,7 +220,7 @@
               </AnchorPane>
           </center>
           <top>
-              <HBox alignment="CENTER" prefHeight="93.0" styleClass="back-gray" BorderPane.alignment="CENTER">
+              <HBox alignment="CENTER" onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="93.0" styleClass="back-gray" BorderPane.alignment="CENTER">
                <children>
                   <FontAwesomeIconView fill="#5e2eee" glyphName="LIST_ALT" size="37">
                      <HBox.margin>

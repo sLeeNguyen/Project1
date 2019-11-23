@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 public class LevelController {
-    private int level = 1;
+    private int level;
 
     @FXML
     private JFXButton jfxBtnLevel1;
@@ -24,13 +24,11 @@ public class LevelController {
     private JFXButton jfxBtnLevel5;
 
     @FXML
-    private JFXButton jfxBtnLevel6;
-
-    @FXML
-    private JFXButton jfxBtnLevel7;
-
-    @FXML
     private Label lbSuccess;
+
+    public LevelController() {
+        level = 1;
+    }
 
     @FXML
     void onSetLevel(ActionEvent event) {
@@ -50,11 +48,8 @@ public class LevelController {
         else if (event.getSource() == jfxBtnLevel5) {
             setLevel(5);
         }
-        else if (event.getSource() == jfxBtnLevel6) {
-            setLevel(6);
-        }
         else {
-            setLevel(7);
+            setLevel(6);
         }
     }
 
