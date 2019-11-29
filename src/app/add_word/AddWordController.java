@@ -92,21 +92,7 @@ public class AddWordController implements Initializable {
         classifyCB.setValue("none");
     }
 
-    private void UpdateNecessaryInformation(int id, String[] listTag) throws SQLException {
-
-        // update HashTag Table and update WordTag Table
-        String sql1 = "INSERT HashTag Values(?, ?)";
-        String sql2 = "INSERT WordTag Values(?, ?)";
-        PreparedStatement pstm1 = conn.prepareStatement(sql1);
-        PreparedStatement pstm2 = conn.prepareStatement(sql2);
-        for (int i = 0; i < listTag.length; i++) {
-            pstm1.setString(1, id+""+i);
-            pstm1.setString(2, listTag[i]);
-            pstm2.setInt(1, id);
-            pstm2.setString(2, id+""+i);
-            pstm1.executeUpdate();
-            pstm2.executeUpdate();
-        }
+    private void UpdateNecessaryInformation(int id) throws SQLException {
 
         // update Analysis Table
         String sql = "INSERT Analysis(fail, analysisWord_id) Values(?, ?)";
@@ -145,20 +131,21 @@ public class AddWordController implements Initializable {
 
         // add to database
         FileInputStream fis = null;
-        String sql = "INSERT dbo.Information(word, mean, ipa, suggest, classify, pimage, audio, dateWord) Values(?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT dbo.Information(word, mean, ipa, suggest, hashtag, classify, pimage, audio, dateWord) Values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1, word);
             pstm.setString(2, mean);
             pstm.setString(3, ipa);
             pstm.setString(4, suggest);
-            pstm.setString(5, classify);
-            pstm.setDate(8, date);
+            pstm.setString(5, hashTag);
+            pstm.setString(6, classify);
+            pstm.setDate(9, date);
 
             // set audio
             if (fileAudio != null) {
                 fis = new FileInputStream(fileAudio);
-                pstm.setBinaryStream(7, fis, fileAudio.length());
+                pstm.setBinaryStream(8, fis, fileAudio.length());
             }
             else {
                 String msg = "Bạn có muốn hệ thống tự động tạo file phát âm?";
@@ -166,19 +153,19 @@ public class AddWordController implements Initializable {
                     tts.SoundCreator(word);
                     File fileTTS = new File("audio.mp3");
                     fis = new FileInputStream(fileTTS);
-                    pstm.setBinaryStream(7, fis, fileTTS.length());
+                    pstm.setBinaryStream(8, fis, fileTTS.length());
                 } else {
-                    pstm.setBinaryStream(7, null);
+                    pstm.setBinaryStream(8, null);
                 }
             }
 
             // set pimage
             if (fileImg != null) {
                 fis = new FileInputStream(fileImg);
-                pstm.setBinaryStream(6, fis, fileImg.length());
+                pstm.setBinaryStream(7, fis, fileImg.length());
             }
             else {
-                pstm.setBinaryStream(6, null);
+                pstm.setBinaryStream(7, null);
             }
             if (ca.alertConfirmMessage("Bạn chắc chắc muốn thêm?")) {
                 pstm.executeUpdate();
@@ -186,7 +173,7 @@ public class AddWordController implements Initializable {
                 PreparedStatement pstm1 = conn.prepareStatement(sql1);
                 ResultSet rs = pstm1.executeQuery();
                 if (rs.next()) {
-                    UpdateNecessaryInformation(rs.getInt(1), hashTag.split("\\s+"));
+                    UpdateNecessaryInformation(rs.getInt(1));
                 }
                 ca.alertSuccessMessage("Thêm thành công!");
             }
