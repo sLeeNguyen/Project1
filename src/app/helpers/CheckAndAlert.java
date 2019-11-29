@@ -15,9 +15,8 @@ public class CheckAndAlert {
 
     public boolean isHashtagNotValid(String str) {
         if (str == null || str.isEmpty()) return false;
-        return !str.matches("(#(_*[a-zA-Z0-9]+_*)+)+");
+        return !str.matches("(#(_*[a-zA-Z0-9]+_*)+)(\\s+(#(_*[a-zA-Z0-9]+_*)+))*");
     }
-
 
     // alert
     public void alertErrorMessage(String msg) {
