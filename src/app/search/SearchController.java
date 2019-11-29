@@ -87,11 +87,12 @@ public class SearchController implements Initializable {
         String sql = "SELECT TOP 50 word_id, word, mean, ipa, suggest, hashtag, classify, dateWord FROM Information WHERE";
 
         if (!word.isEmpty()) {
-            sql += " word=\'" + word.toLowerCase() + "\' AND";
+            sql += " word=\'" + word.toLowerCase() + "\'";
             flag = true;
         }
         if (!hashTag.isEmpty()) {
-            sql += " hashtag=\'" + hashTagJFX.getText() + "\' AND";
+            sql += " (hashtag LIKE \'%" + hashTagJFX.getText() + " %\' OR hashtag LIKE \'%"+hashTagJFX.getText()+"\') AND";
+            System.out.println(sql);
             flag = true;
         }
         if (!"none".equals(classify)) {
