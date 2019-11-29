@@ -92,7 +92,6 @@ public class SearchController implements Initializable {
         }
         if (!hashTag.isEmpty()) {
             sql += " (hashtag LIKE \'%" + hashTagJFX.getText() + " %\' OR hashtag LIKE \'%"+hashTagJFX.getText()+"\') AND";
-            System.out.println(sql);
             flag = true;
         }
         if (!"none".equals(classify)) {
