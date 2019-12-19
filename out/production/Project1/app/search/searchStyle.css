@@ -45,3 +45,7 @@
     -fx-background-radius: 5px;
     -fx-background-color: #CDCDCD;
 }
+
+.jfx-text-field-search {
+    -fx-prompt-text-fill: #aba7a7;
+}

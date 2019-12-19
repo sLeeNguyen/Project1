@@ -1,90 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="943.0" style="-fx-background-color: #fff;" stylesheets="@../../stylesheet/homestyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.home.HomeController">
-    <children>
-        <Pane onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="173.0" prefWidth="980.0" style="-fx-background-color: #2D75E8;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <children>
-                <Label layoutX="130.0" layoutY="44.0" text="Study English" textFill="WHITE">
-                    <font>
-                        <Font size="48.0" />
-                    </font>
-                </Label>
-                <Label layoutX="136.0" layoutY="105.0" text="Try your best" textFill="WHITE">
-                    <font>
-                        <Font size="13.0" />
-                    </font>
-                </Label>
-
-                <HBox alignment="TOP_RIGHT" layoutX="843.0" layoutY="2.0" prefHeight="19.0" prefWidth="96.0" style="-fx-cursor: hand;">
-
-                    <fx:include source="../views/Title_Bar.fxml" />
-
-                </HBox>
-            <ImageView fitHeight="81.0" fitWidth="80.0" layoutX="50.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../images/logo2.png" />
-               </image>
-            </ImageView>
-            </children>
-        </Pane>
-        <GridPane fx:id="homeGP" alignment="CENTER" hgap="10.0" layoutX="165.0" layoutY="228.0" prefHeight="320.0" prefWidth="650.0" vgap="10.0" AnchorPane.leftAnchor="165.0" AnchorPane.rightAnchor="165.0">
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            </rowConstraints>
-            <children>
-                <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="181.0" prefWidth="242.0" style="-fx-cursor: hand;" text="Dashboard">
-               <graphic>
-                  <FontAwesomeIconView fill="#2d75e8" glyphName="HOME" size="50" />
-               </graphic></Button>
-                <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#addWords" prefHeight="181.0" prefWidth="242.0" style="-fx-cursor: hand;" text="Thêm mới" GridPane.columnIndex="1">
-                    <graphic>
-                        <FontAwesomeIconView fill="#2d75e8" glyphName="PLUS_CIRCLE" size="55" />
-                    </graphic>
-                </Button>
-                <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#fixOrDelete" prefHeight="181.0" prefWidth="242.0" style="-fx-cursor: hand;" text="Sửa/xóa" GridPane.columnIndex="2">
-                    <graphic>
-                        <FontAwesomeIconView fill="#2d75e8" glyphName="CALENDAR_CHECK_ALT" glyphStyle="CHANGE" size="50" />
-                    </graphic>
-                </Button>
-                <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#setting" prefHeight="181.0" prefWidth="242.0" style="-fx-cursor: hand;" text="Cài đặt" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                    <graphic>
-                        <FontAwesomeIconView fill="#2d75e8" glyphName="SLIDERS" size="50" />
-                    </graphic>
-                </Button>
-                <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#test" prefHeight="181.0" prefWidth="242.0" style="-fx-cursor: hand;" text="Kiểm tra" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                    <graphic>
-                        <FontAwesomeIconView fill="#2d75e8" glyphName="CALENDAR_CHECK_ALT" size="50" />
-                    </graphic>
-                </Button>
-                <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#search" prefHeight="181.0" prefWidth="242.0" style="-fx-cursor: hand;" text="Tìm kiếm" GridPane.rowIndex="1">
-                    <graphic>
-                        <FontAwesomeIconView fill="#2d75e8" glyphName="SEARCH" size="50" />
-                    </graphic>
-                </Button>
-            </children>
-        </GridPane>
-    </children>
-   <effect>
-      <DropShadow />
-   </effect>
-</AnchorPane>
+<VBox prefHeight="642.0" prefWidth="1000.0" stylesheets="@../../stylesheet/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.home.HomeController">
+   <children>
+      <VBox prefHeight="188.0" prefWidth="950.0" styleClass="back-blue" VBox.vgrow="SOMETIMES">
+         <children>
+            <HBox alignment="CENTER_RIGHT" onMouseDragged="#dragged" onMousePressed="#pressed" VBox.vgrow="SOMETIMES">
+               <fx:include source="../views/Title_Bar.fxml" />
+            </HBox>
+            <HBox prefHeight="111.0" prefWidth="869.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <FontAwesomeIconView fill="WHITE" glyphName="MORTAR_BOARD" size="6em">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIconView>
+                  <Label text="Study English" textFill="WHITE">
+                     <font>
+                        <Font size="50.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="40.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" prefHeight="505.0" prefWidth="950.0" style="-fx-background-color: #fff;" VBox.vgrow="ALWAYS">
+         <children>
+            <GridPane hgap="20.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="350.0" prefWidth="500.0" vgap="20.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="293.0" minWidth="10.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="293.0" minWidth="10.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <JFXButton contentDisplay="TOP" focusTraversable="false" onAction="#addWords" prefHeight="181.0" prefWidth="250.0" styleClass="jfx-button-home" text="Thêm mới">
+                     <graphic>
+                        <FontAwesomeIconView fill="#2d75e8" glyphName="PLUS_CIRCLE" size="55" styleClass="fontawesome-home" />
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton contentDisplay="TOP" focusTraversable="false" onAction="#search" prefHeight="181.0" prefWidth="250.0" styleClass="jfx-button-home" text="Tìm kiếm" GridPane.columnIndex="1">
+                     <graphic>
+                        <FontAwesomeIconView fill="#2d75e8" glyphName="SEARCH" size="55" styleClass="fontawesome-home" />
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton contentDisplay="TOP" focusTraversable="false" onAction="#test" prefHeight="181.0" prefWidth="250.0" styleClass="jfx-button-home" text="Kiểm tra" GridPane.rowIndex="1">
+                     <graphic>
+                        <FontAwesomeIconView fill="#2d75e8" glyphName="LEANPUB" size="55" styleClass="fontawesome-home" />
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton contentDisplay="TOP" focusTraversable="false" onAction="#setting" prefHeight="181.0" prefWidth="250.0" styleClass="jfx-button-home" text="Cài đặt" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <graphic>
+                        <FontAwesomeIconView fill="#2d75e8" glyphName="SLIDERS" size="55" styleClass="fontawesome-home" />
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </GridPane>
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="20.0" top="20.0" />
+         </padding>
+      </HBox>
+   </children>
+</VBox>

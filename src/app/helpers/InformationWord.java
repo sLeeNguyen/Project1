@@ -11,6 +11,7 @@ public class InformationWord {
     private String hashtag;
     private String classify;
     private Date date;
+    private int numOfFail;
 
     public InformationWord() {}
 
@@ -23,6 +24,19 @@ public class InformationWord {
         this.hashtag = hashtag;
         this.classify = classify;
         this.date = date;
+        this.numOfFail = 0;
+    }
+
+    public InformationWord(int word_id, String word, String mean, String ipa, String suggest, String hashtag, String classify, Date date, int numOfFail) {
+        this.word_id = word_id;
+        this.word = word;
+        this.mean = mean;
+        this.ipa = ipa;
+        this.suggest = suggest;
+        this.hashtag = hashtag;
+        this.classify = classify;
+        this.date = date;
+        this.numOfFail = numOfFail;
     }
 
     public int getWord_id() {
@@ -87,5 +101,17 @@ public class InformationWord {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public int getNumOfFail() {
+        return numOfFail;
+    }
+
+    public void setNumOfFail(int numOfFail) {
+        this.numOfFail = numOfFail;
+    }
+
+    public int increaseNumOfFail() {
+        return ++numOfFail;
     }
 }

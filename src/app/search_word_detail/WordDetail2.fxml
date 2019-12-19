@@ -282,7 +282,7 @@
                      <children>
                         <VBox alignment="TOP_CENTER" prefHeight="376.0" prefWidth="321.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <JFXTextField fx:id="wordsTF" labelFloat="true" promptText="Từ/Cụm từ" unFocusColor="BLACK">
+                              <JFXTextField fx:id="wordsTF" focusColor="#5c7bd7" labelFloat="true" promptText="Từ/Cụm từ" styleClass="jfx-text-field-detail" unFocusColor="BLACK">
                                  <VBox.margin>
                                     <Insets bottom="20.0" top="25.0" />
                                  </VBox.margin>
@@ -290,7 +290,7 @@
                                     <Font size="17.0" />
                                  </font>
                               </JFXTextField>
-                              <JFXTextField fx:id="meanTF" labelFloat="true" promptText="Nghĩa">
+                              <JFXTextField fx:id="meanTF" labelFloat="true" promptText="Nghĩa" styleClass="jfx-text-field-detail">
                                  <VBox.margin>
                                     <Insets bottom="20.0" top="20.0" />
                                  </VBox.margin>
@@ -298,7 +298,7 @@
                                     <Font size="17.0" />
                                  </font>
                               </JFXTextField>
-                              <JFXTextField fx:id="ipaTF" labelFloat="true" promptText="Phiên âm">
+                              <JFXTextField fx:id="ipaTF" labelFloat="true" promptText="Phiên âm" styleClass="jfx-text-field-detail">
                                  <VBox.margin>
                                     <Insets bottom="20.0" top="20.0" />
                                  </VBox.margin>
@@ -306,7 +306,7 @@
                                     <Font size="17.0" />
                                  </font>
                               </JFXTextField>
-                              <JFXTextField fx:id="suggestTF" labelFloat="true" promptText="Gợi ý">
+                              <JFXTextField fx:id="suggestTF" labelFloat="true" promptText="Gợi ý" styleClass="jfx-text-field-detail">
                                  <VBox.margin>
                                     <Insets bottom="20.0" top="20.0" />
                                  </VBox.margin>
@@ -314,7 +314,7 @@
                                     <Font size="17.0" />
                                  </font>
                               </JFXTextField>
-                              <JFXTextField fx:id="hashTagTF" labelFloat="true" promptText="#Hashtag">
+                              <JFXTextField fx:id="hashTagTF" labelFloat="true" promptText="#Hashtag" styleClass="jfx-text-field-detail">
                                  <VBox.margin>
                                     <Insets bottom="20.0" top="20.0" />
                                  </VBox.margin>

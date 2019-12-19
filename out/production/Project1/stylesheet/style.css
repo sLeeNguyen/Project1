@@ -76,11 +76,14 @@
     -fx-border-width: 3px;
     -fx-border-color: transparent;
     -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
 }
 
 
 .jfx-btn:hover {
-    -fx-border-color: red;
+    -fx-border-color: white;
+    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(to right, #5CAFEA, #895076);
 }
 
 .jfx-btn-level {
@@ -96,4 +99,81 @@
     -fx-font-size: 25px;
     -fx-background-color: white;
     -fx-text-fill: blue;
+}
+
+.jfx-btn-mode {
+    -fx-background-color: transparent;
+    -fx-background-radius: 15px;
+    -fx-border-width: 2px;
+    -fx-border-color: white;
+    -fx-border-radius: 15px;
+    -fx-cursor: hand;
+    -fx-text-fill: white;
+}
+
+.jfx-btn-mode:hover {
+    -fx-background-color: white;
+    -fx-background-color: linear-gradient(to right, #5CAFEA, #895076);
+}
+
+.jfx-btn-done {
+    -fx-background-color: transparent;
+    -fx-background-radius: 15px;
+    -fx-border-width: 2px;
+    -fx-border-color: #979797;
+    -fx-border-radius: 15px;
+    -fx-cursor: hand;
+    -fx-text-fill: #979797;
+}
+
+.jfx-btn-done:hover {
+    -fx-background-color: white;
+    -fx-background-color: linear-gradient(to right, #5CAFEA, #895076);
+    -fx-text-fill: white;
+}
+
+.jfx-text-field-mode {
+    -fx-prompt-text-fill: white;
+    -jfx-focus-color: #CDCDCD;
+    -jfx-unfocus-color: WHITE;
+    -fx-text-inner-color: WHITE;
+}
+
+.jfx-text-field-detail {
+    -fx-prompt-text-fill: #CDCDCD;
+}
+
+.linear-grad-to-bottom{
+    -fx-background-color: linear-gradient(to bottom, #5CAFEA, #0283DF);
+}
+
+.linear-grad-to-top{
+    -fx-background-color: linear-gradient(to top, #5CAFEA, #0283DF);
+}
+
+.grad-radius-3{
+   -fx-background-color: radial-gradient(center 50% 50% , radius 100% , #ffebcd, #008080);
+}
+
+.fontawesome-home {
+    -fx-size: 55px;
+    -fx-text-fill: #2d75e8;
+}
+
+.jfx-button-home {
+    -fx-background-color: #F3F3F3;
+    -fx-background-radius: 10px;
+    -fx-font-size: 16px;
+}
+
+.jfx-button-home:hover {
+    -fx-font-size: 10px;
+    -fx-text-fill: transparent;
+    -fx-background-color: #A1C1F4;
+}
+
+.jfx-button-home:hover .fontawesome-home {
+    -fx-scale-x: 1.6;
+    -fx-scale-y: 1.6;
+    -fx-scale-z: 1.6;
 }

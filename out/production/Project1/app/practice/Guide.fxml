@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="600.0" style="-fx-background-color: white;" stylesheets="@../../stylesheet/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="linear-grad-to-top">
+         <children>
+            <FontAwesomeIconView fill="WHITE" glyphName="NEWSPAPER_ALT" size="5em">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </FontAwesomeIconView>
+            <Label text="Hướng dẫn" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="32.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <JFXTextArea editable="false" prefHeight="422.0" prefWidth="580.0" text="- Chế độ kiểm tra: Bạn có thể chọn kiểm tra các từ cùng hashtag bằng cách nhập hashtag bạn muốn, kiểm tra các từ cùng ngày, cùng tháng, cùng năm, hoặc trong 1 khoảng thời gian. Bạn cần nhấn xác nhận để hệ thống thiết lập chế độ.  Bạn cũng có thể chọn chế độ mặc định.&#10;- Chọn mức độ khó: &#10;     + Mức 1 (mặc định): Hệ thống sẽ hiển thị các ô trống, mỗi ô đại diện cho một chữ cái hoặc khoảng trắng. Bên cạnh đó còn có thể xem hình ảnh minh họa, dịch nghĩa, xem phiên âm, nghe phát âm, đọc gợi ý, xem hashtag, xem thời điểm thêm từ/cụm từ vào hệ thống.&#10;     + Mức 2 (khó hơn mức 1): Tương tự mức 1 nhưng không được xem phiên âm.&#10;     + Mức 3 (khó hơn mức 2): Tương tự mức 2 nhưng không được xem gợi ý.&#10;     + Mức 4 (khó hơn mức 3): Tương tự mức 3 nhưng không được nghe phát âm.&#10;     + Mức 5 (khó hơn mức 4): Tương tự mức 4 nhưng không có dịch nghĩa.&#10;     + Mức 6 (khó hơn mức 5): Tương tự mức 5 nhưng không cho biết số lượng chữ cái.&#10;- Chọn mức độ hỗ trợ khi chấm bài:&#10;     + Mức 1 (mặc định): hệ thống sẽ báo cho bạn biết các chữ cái nào nhập sai (nếu lúc điền từ/cụm từ có cho biết số lượng chữ cái). Với các mức độ làm bài không cho biết số lượng chữ cái thì hệ thống sẽ hiển thị số chữ cái cần điền. Cùng với đó là gợi ý cho xem phiên âm, nghĩa, nghe phát âm (nếu lúc điền từ không cho biết xem/nghe phiên âm/phát âm).&#10;     + Mức 2 (ít gợi ý hơn mức 1): Tương tự mức 1 nhưng với các mức độ làm bài không cho biêt từ/cụm từ có bao nhiêu chữ cái thì hệ thống sẽ hiển thị xâu con chung dài nhất (giữa đáp án của bạn và đáp án của hệ thống).&#10;     + Mức 3 (ít gợi ý hơn mức 2): Tương tự mức 2 nhưng chỉ có gợi ý cho nghe phát âm (nếu lúc điền từ/cụm từ không cho biết xem/nghe phiên âm/phát âm).&#10;     + Mức 4 (ít gợi ý hơn mức 3): Không có bất kì gợi ý nào, nhưng khi bạn làm đúng sẽ hiển thị ra phiên âm và cho nghe phát âm.&#10;&#10;Bên cạnh đó, hệ thống cũng đã tích hợp sẵn AI giúp cho việc học của bạn trở nên hiệu quả hơn.">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="20.0" />
+         </VBox.margin>
+      </JFXTextArea>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -35,14 +36,7 @@
                               </ImageView>
                            </children>
                         </HBox>
-                        <ImageView fitHeight="124.0" fitWidth="143.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../images/welcome.png" />
-                           </image>
-                           <VBox.margin>
-                              <Insets bottom="40.0" />
-                           </VBox.margin>
-                        </ImageView>
+                        <FontAwesomeIconView fill="WHITE" glyphName="CHILD" size="10em" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 4em; -fx-fill: white; -fx-font-family: Arial;" text="W3lcome to">
                            <font>
                               <Font name="System Bold" size="15.0" />
@@ -63,11 +57,11 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <ImageView fitHeight="100.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../images/logo.png" />
-                                       </image>
-                                    </ImageView>
+                                    <FontAwesomeIconView fill="#0283df" glyphName="YELP" size="6em">
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </FontAwesomeIconView>
                                     <Text fill="#0283df" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: Arial; -fx-font-weight: bold; -fx-font-size: 2.5em;" text="Study English" />
                                  </children>
                                  <VBox.margin>
@@ -76,7 +70,7 @@
                               </HBox>
                               <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <JFXButton contentDisplay="RIGHT" onMouseClicked="#goOn" styleClass="cursor-hand" text="Tiếp tục" textFill="#0283df">
+                                    <JFXButton contentDisplay="RIGHT" focusTraversable="false" onMouseClicked="#goOn" styleClass="cursor-hand" text="Tiếp tục" textFill="#0283df">
                                        <graphic>
                                           <ImageView fitHeight="54.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
                                              <image>

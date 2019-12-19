@@ -22,6 +22,7 @@ import javazoom.jl.player.Player;
 import java.io.*;
 import java.net.URL;
 import java.sql.*;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class WordDetailController implements Initializable {
@@ -122,7 +123,7 @@ public class WordDetailController implements Initializable {
         suggestTF.setText(iw.getSuggest());
         hashTagTF.setText(iw.getHashtag());
         setClassifyCB(iw.getClassify());
-        dateLBDetail.setText(iw.getDate().toString());
+        dateLBDetail.setText(iw.getDate().toLocalDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 
         wordLB.textProperty().bind(wordsTF.textProperty());
         meanLB.textProperty().bind(meanTF.textProperty());
@@ -188,7 +189,6 @@ public class WordDetailController implements Initializable {
         String suggest = suggestTF.getText();
         String hashTag = hashTagTF.getText();
         String classify = classifyCB.getValue();
-//        Date date = new Date(System.currentTimeMillis());
         PreparedStatement pstm;
         String sql;
 

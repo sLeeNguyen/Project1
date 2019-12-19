@@ -4,6 +4,7 @@ import app.helpers.CheckAndAlert;
 import app.helpers.HelpScene;
 import app.helpers.InformationWord;
 import app.helpers.database.DatabaseHandler;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,7 +12,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -37,7 +37,7 @@ public class SearchController implements Initializable {
     private ChoiceBox<String> classifyCB;
 
     @FXML
-    private DatePicker dateDP;
+    private JFXDatePicker dateDP;
 
     @FXML
     private VBox listItemVBox;
@@ -87,7 +87,7 @@ public class SearchController implements Initializable {
         String sql = "SELECT TOP 50 word_id, word, mean, ipa, suggest, hashtag, classify, dateWord FROM Information WHERE";
 
         if (!word.isEmpty()) {
-            sql += " word=\'" + word.toLowerCase() + "\'";
+            sql += " word=\'" + word.toLowerCase() + "\' AND";
             flag = true;
         }
         if (!hashTag.isEmpty()) {

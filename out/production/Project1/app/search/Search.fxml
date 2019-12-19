@@ -1,159 +1,171 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane stylesheets="@searchStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.search.SearchController">
-    <children>
-        <Pane onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="117.0" prefWidth="935.0" style="-fx-background-color: #2D75E8;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <children>
-                <Label layoutX="371.0" layoutY="27.0" text="Tìm kiếm" textFill="WHITE">
-                    <font>
-                        <Font size="48.0" />
-                    </font>
-               <padding>
-                  <Insets bottom="20.0" />
-               </padding>
-                </Label>
-
-                <HBox alignment="TOP_RIGHT" layoutX="839.0" layoutY="5.0" prefHeight="19.0" prefWidth="96.0" style="-fx-cursor: hand;">
-
-                    <fx:include source="../views/Title_Bar.fxml" />
-
-                </HBox>
-            <ImageView fitHeight="81.0" fitWidth="80.0" layoutX="243.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../images/logo2.png" />
-               </image>
-            </ImageView>
-            </children>
-         <effect>
-            <DropShadow />
-         </effect>
-        </Pane>
-      <HBox layoutY="149.0" prefWidth="935.0">
+<VBox prefHeight="811.0" prefWidth="961.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.search.SearchController">
+   <children>
+      <VBox onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="134.0" prefWidth="961.0" styleClass="back-blue">
          <children>
-            <VBox style="-fx-background-color: #E9E9E9;">
+
+                                  <HBox alignment="TOP_RIGHT" prefHeight="19.0" prefWidth="96.0" style="-fx-cursor: hand;">
+
+                                      <fx:include source="../views/Title_Bar.fxml" />
+
+                                  </HBox>
+            <HBox alignment="CENTER">
                <children>
-                  <HBox alignment="CENTER" prefHeight="80.0" prefWidth="292.0">
+                  <FontAwesomeIconView fill="WHITE" glyphName="YELP" size="5em">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </FontAwesomeIconView>
+                      <Label prefHeight="54.0" prefWidth="194.0" text="Tìm kiếm" textFill="WHITE">
+                          <font>
+                              <Font size="48.0" />
+                          </font>
+                      </Label>
+               </children>
+            </HBox>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin>
+      </VBox>
+      <VBox alignment="CENTER" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="592.0" prefWidth="961.0">
+               <children>
+                  <VBox style="-fx-background-color: #E9E9E9;">
                      <children>
-                        <FontAwesomeIconView glyphName="EDIT" size="30" styleClass="fontAweSomeIcon" wrappingWidth="25.714284896850586">
-                           <HBox.margin>
-                              <Insets right="15.0" />
-                           </HBox.margin>
-                        </FontAwesomeIconView>
-                        <JFXTextField fx:id="wordsJFX" labelFloat="true" onKeyReleased="#initializeListener" prefHeight="31.0" prefWidth="217.0" promptText="Từ/cụm từ" unFocusColor="#7a7a7a">
-                           <font>
-                              <Font name="Arial" size="16.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </JFXTextField>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="80.0" prefWidth="292.0">
-                     <children>
-                        <FontAwesomeIconView glyphName="FLAG" size="30" styleClass="fontAweSomeIcon" wrappingWidth="25.714284896850586">
-                           <HBox.margin>
-                              <Insets right="15.0" />
-                           </HBox.margin>
-                        </FontAwesomeIconView>
-                        <JFXTextField fx:id="hashTagJFX" labelFloat="true" prefHeight="31.0" prefWidth="217.0" promptText="#Hashtag" unFocusColor="#7a7a7a">
-                           <font>
-                              <Font name="Arial" size="16.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </JFXTextField>
-                     </children>
-                  </HBox>
-                  <VBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="292.0">
-                     <children>
-                        <Label text="Phân loại" />
-                        <ChoiceBox fx:id="classifyCB" prefHeight="31.0" prefWidth="123.0" />
+                        <HBox alignment="CENTER" prefHeight="80.0" prefWidth="292.0">
+                           <children>
+                              <FontAwesomeIconView glyphName="EDIT" size="30" styleClass="fontAweSomeIcon" wrappingWidth="25.714284896850586">
+                                 <HBox.margin>
+                                    <Insets right="15.0" />
+                                 </HBox.margin>
+                              </FontAwesomeIconView>
+                              <JFXTextField fx:id="wordsJFX" focusColor="#708de4" labelFloat="true" onKeyReleased="#initializeListener" prefHeight="31.0" prefWidth="217.0" promptText="Từ/cụm từ" styleClass="jfx-text-field-search" unFocusColor="#7a7a7a">
+                                 <font>
+                                    <Font name="Arial" size="16.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </JFXTextField>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="80.0" prefWidth="292.0">
+                           <children>
+                              <FontAwesomeIconView glyphName="FLAG" size="30" styleClass="fontAweSomeIcon" wrappingWidth="25.714284896850586">
+                                 <HBox.margin>
+                                    <Insets right="15.0" />
+                                 </HBox.margin>
+                              </FontAwesomeIconView>
+                              <JFXTextField fx:id="hashTagJFX" focusColor="#708de4" labelFloat="true" prefHeight="31.0" prefWidth="217.0" promptText="#Hashtag" styleClass="jfx-text-field-search" unFocusColor="#7a7a7a">
+                                 <font>
+                                    <Font name="Arial" size="16.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </JFXTextField>
+                           </children>
+                        </HBox>
+                        <VBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="292.0">
+                           <children>
+                              <Label text="Phân loại" />
+                              <ChoiceBox fx:id="classifyCB" prefHeight="31.0" prefWidth="123.0" />
+                           </children>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </VBox>
+                        <HBox alignment="CENTER" prefHeight="80.0" prefWidth="292.0">
+                           <children>
+                              <JFXDatePicker fx:id="dateDP" prefHeight="31.0" prefWidth="232.0">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </JFXDatePicker>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <JFXButton onAction="#search" prefHeight="56.0" prefWidth="175.0" style="-fx-cursor: hand;" styleClass="btn1" text="Tìm" textFill="#7a7a7a">
+                                 <font>
+                                    <Font name="Arial Bold" size="20.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontAwesomeIconView accessibleRole="BUTTON" fill="#7a7a7a" glyphName="SEARCH" mouseTransparent="true" size="20" />
+                                 </graphic>
+                              </JFXButton>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="40.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <FontAwesomeIconView glyphName="ANGLE_DOUBLE_LEFT" onMouseClicked="#onBack" size="30" styleClass="fontAweSomeIcon">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </FontAwesomeIconView>
+                              <JFXButton onMouseClicked="#onBack" text="Quay lại">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets top="40.0" />
+                           </VBox.margin>
+                        </HBox>
                      </children>
                      <padding>
-                        <Insets left="20.0" />
+                        <Insets bottom="10.0" top="10.0" />
                      </padding>
                   </VBox>
-                  <HBox alignment="CENTER" prefHeight="80.0" prefWidth="292.0">
-                     <children>
-                        <DatePicker fx:id="dateDP" prefHeight="31.0" prefWidth="250.0" promptText="Ngày" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <JFXButton onAction="#search" prefHeight="56.0" prefWidth="175.0" style="-fx-cursor: hand;" styleClass="btn1" text="Tìm" textFill="#7a7a7a">
-                           <font>
-                              <Font name="Arial Bold" size="20.0" />
-                           </font>
-                           <graphic>
-                              <FontAwesomeIconView accessibleRole="BUTTON" fill="#7a7a7a" glyphName="SEARCH" mouseTransparent="true" size="20" />
-                           </graphic>
-                        </JFXButton>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="40.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT">
-                     <children>
-                        <FontAwesomeIconView glyphName="ANGLE_DOUBLE_LEFT" onMouseClicked="#onBack" size="30" styleClass="fontAweSomeIcon">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor></FontAwesomeIconView>
-                        <JFXButton onMouseClicked="#onBack" text="Quay lại">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <font>
-                              <Font size="16.0" />
-                           </font></JFXButton>
-                     </children>
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
-                     <VBox.margin>
-                        <Insets top="40.0" />
-                     </VBox.margin>
-                  </HBox>
+                  <ScrollPane prefHeight="565.0" prefWidth="525.0">
+                     <content>
+                        <VBox fx:id="listItemVBox" prefHeight="551.0" prefWidth="505.0" />
+                     </content>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ScrollPane>
                </children>
                <padding>
-                  <Insets bottom="10.0" top="10.0" />
+                  <Insets bottom="10.0" />
                </padding>
-            </VBox>
-            <ScrollPane prefHeight="565.0" prefWidth="525.0">
-               <content>
-                  <VBox fx:id="listItemVBox" prefHeight="551.0" prefWidth="505.0" />
-               </content>
-               <HBox.margin>
-                  <Insets left="20.0" />
-               </HBox.margin>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </ScrollPane>
+            </HBox>
          </children>
-         <padding>
-            <Insets bottom="10.0" />
-         </padding>
-      </HBox>
-    </children>
-</AnchorPane>
+      </VBox>
+   </children>
+   <stylesheets>
+      <URL value="@searchStyle.css" />
+      <URL value="@../../stylesheet/style.css" />
+   </stylesheets>
+</VBox>

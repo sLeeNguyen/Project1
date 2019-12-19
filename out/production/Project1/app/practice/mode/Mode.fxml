@@ -1,8 +1,157 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.practice.mode.ModeController">
-
-</AnchorPane>
+<VBox fx:id="vbMode" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="550.0" prefWidth="427.0" style="-fx-background-radius: 10px; -fx-border-radius: 10px;" styleClass="linear-grad-to-bottom" stylesheets="@../../../stylesheet/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.practice.mode.ModeController">
+    <children>
+        <Label text="Thiết đặt" textFill="WHITE">
+            <font>
+                <Font size="30.0" />
+            </font>
+            <VBox.margin>
+                <Insets bottom="5.0" />
+            </VBox.margin>
+        </Label>
+      <Label text="Hãy nhập thông tin chung của các từ bạn muốn học!" textFill="WHITE">
+         <VBox.margin>
+            <Insets bottom="5.0" />
+         </VBox.margin>
+      </Label>
+      <HBox alignment="CENTER_RIGHT">
+         <children>
+            <JFXButton onAction="#onSetDefault" text="Mặc định">
+               <styleClass>
+                  <String fx:value="jfx-text-field-mode" />
+                  <String fx:value="jfx-btn-mode" />
+               </styleClass>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+      </HBox>
+        <HBox alignment="CENTER" prefHeight="60.0" prefWidth="350.0" styleClass="cursor-hand">
+            <children>
+            <FontAwesomeIconView fill="#795757" glyphName="FLAG" size="2em">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </FontAwesomeIconView>
+            <JFXTextField fx:id="hashtagJFXTF" labelFloat="true" prefHeight="33.0" prefWidth="288.0" promptText="#Hashtag" styleClass="jfx-text-field-mode" unFocusColor="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            </children>
+            <VBox.margin>
+                <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+            </VBox.margin>
+        </HBox>
+      <HBox alignment="CENTER" prefHeight="60.0" prefWidth="350.0" styleClass="cursor-hand">
+         <children>
+            <FontAwesomeIconView fill="#795757" glyphName="CALENDAR" size="2em">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </FontAwesomeIconView>
+            <JFXTextField fx:id="dateJFXTF" labelFloat="true" onKeyReleased="#onInputTime" prefHeight="33.0" prefWidth="288.0" promptText="Ngày thêm" styleClass="jfx-text-field-mode" unFocusColor="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="60.0" prefWidth="350.0" styleClass="cursor-hand">
+         <children>
+            <FontAwesomeIconView fill="#795757" glyphName="CALENDAR" size="2em">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </FontAwesomeIconView>
+            <JFXTextField fx:id="monthJFXTF" labelFloat="true" onKeyReleased="#onInputTime" prefHeight="33.0" prefWidth="288.0" promptText="Tháng thêm" styleClass="jfx-text-field-mode" unFocusColor="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="60.0" prefWidth="350.0" styleClass="cursor-hand">
+         <children>
+            <FontAwesomeIconView fill="#795757" glyphName="CALENDAR" size="2em">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </FontAwesomeIconView>
+            <JFXTextField fx:id="yearJFXTF" labelFloat="true" onKeyReleased="#onInputTime" prefHeight="33.0" prefWidth="288.0" promptText="Năm thêm" styleClass="jfx-text-field-mode" unFocusColor="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="60.0" prefWidth="350.0" styleClass="cursor-hand">
+         <children>
+            <JFXDatePicker fx:id="fromDateJFXDP" defaultColor="#26802d" editable="false" maxHeight="-Infinity" prefHeight="31.0" prefWidth="140.0" promptText="From" styleClass="jfx-text-field-mode">
+               <HBox.margin>
+                  <Insets right="15.0" />
+               </HBox.margin>
+            </JFXDatePicker>
+            <JFXDatePicker fx:id="toDateJFXDP" defaultColor="#26802d" editable="false" layoutX="106.0" layoutY="24.0" prefHeight="31.0" prefWidth="140.0" promptText="To" styleClass="jfx-text-field-mode">
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </JFXDatePicker>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="65.0" prefWidth="397.0" VBox.vgrow="ALWAYS">
+         <children>
+            <JFXButton onAction="#onConfirm" prefHeight="56.0" prefWidth="136.0" styleClass="jfx-btn-mode" text="Xác nhận">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="15.0" />
+               </HBox.margin>
+            </JFXButton>
+            <JFXButton onAction="#onReset" prefHeight="56.0" prefWidth="136.0" styleClass="jfx-btn-mode" text="Làm mới">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </JFXButton>
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+      </HBox>
+    </children>
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+    </padding>
+</VBox>
