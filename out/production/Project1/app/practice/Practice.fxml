@@ -42,7 +42,7 @@
                                  <children>
                                     <ImageView fitHeight="98.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../images/logo2.png" />
+                                          <Image url="@../images/logo2.png" />
                                        </image>
                                     </ImageView>
                                     <Label text="Study English" textFill="WHITE">
@@ -155,7 +155,7 @@
                                  <children>
                                     <ImageView fitHeight="162.0" fitWidth="395.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../images/GAME.png" />
+                                          <Image url="@../images/GAME.png" />
                                        </image>
                                     </ImageView>
                                  </children>
@@ -164,7 +164,7 @@
                                  <children>
                                     <ImageView fitHeight="335.0" fitWidth="657.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../images/unnamed.png" />
+                                          <Image url="@../images/unnamed.png" />
                                        </image>
                                        <effect>
                                           <DropShadow />
@@ -427,7 +427,7 @@
                                                                   </Label>
                                                                   <ImageView fx:id="imgSupport" fitHeight="41.0" fitWidth="41.0" onMouseClicked="#onSupport" pickOnBounds="true" preserveRatio="true" styleClass="cursor-hand">
                                                                      <image>
-                                                                        <Image url="@../../images/support.png" />
+                                                                        <Image url="@../images/support.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                </children>
@@ -700,7 +700,7 @@
                <children>
                   <ImageView fitHeight="350.0" fitWidth="798.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/congrats.png" />
+                        <Image url="@../images/congrats.png" />
                      </image>
                   </ImageView>
                </children>

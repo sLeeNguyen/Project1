@@ -356,6 +356,15 @@
                               <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="320.0">
                                  <children>
                                     <FontAwesomeIconView fill="#2d75e8" glyphName="VOLUME_UP" onMouseClicked="#onPlayAudio" size="30" style="-fx-cursor: hand;" />
+                                    <JFXButton onAction="#onUseTTS" text="Sử dụng Text To Speech">
+                                       <HBox.margin>
+                                          <Insets left="80.0" />
+                                       </HBox.margin>
+                                       <styleClass>
+                                          <String fx:value="jfx-btn-done" />
+                                          <String fx:value="cursor-hand" />
+                                       </styleClass>
+                                    </JFXButton>
                                  </children>
                               </HBox>
                               <ImageView fx:id="imgUpdate" fitHeight="248.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true">

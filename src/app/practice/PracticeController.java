@@ -211,7 +211,7 @@ public class PracticeController implements Initializable {
                 return false;
             }
         } catch (SQLException e) {
-            ca.alertErrorMessage("Error: " + e.getMessage());
+            ca.alertErrorMessage("Không load được dữ liệu. Hãy thử lại hoặc khởi động lại!");
             e.printStackTrace();
         }
         return true;
@@ -263,7 +263,7 @@ public class PracticeController implements Initializable {
                     image = new Image(is);
                     is.close();
                 } else {
-                    image = new Image(new File("src/images/noImage.png").toURI().toString());
+                    image = new Image(new File("E:\\Project1\\src\\app\\images\\noImage.png").toURI().toString());
                 }
             }
             pimage.setImage(image);
@@ -310,7 +310,7 @@ public class PracticeController implements Initializable {
         if (levelController != null) level = levelController.getLevel();
         views.getChildren().clear();
 
-        FXMLLoader loaderLevel = new FXMLLoader(getClass().getResource("./level/Level.fxml"));
+        FXMLLoader loaderLevel = new FXMLLoader(getClass().getResource("/app/practice/level/Level.fxml"));
         Parent parent = loaderLevel.load();
         levelController = loaderLevel.getController();
 
@@ -323,7 +323,7 @@ public class PracticeController implements Initializable {
         if (helpLevelController != null) helpLevel = helpLevelController.getLevel();
         views.getChildren().clear();
 
-        FXMLLoader loaderHelpLevel = new FXMLLoader(getClass().getResource("./help/HelpLevel.fxml"));
+        FXMLLoader loaderHelpLevel = new FXMLLoader(getClass().getResource("/app/practice/help/HelpLevel.fxml"));
         Parent parent = loaderHelpLevel.load();
         helpLevelController = loaderHelpLevel.getController();
 
@@ -334,7 +334,7 @@ public class PracticeController implements Initializable {
     @FXML
     void onChooseMode(ActionEvent event) throws IOException {
         views.getChildren().clear();
-        FXMLLoader loaderHelpLevel = new FXMLLoader(getClass().getResource("./mode/Mode.fxml"));
+        FXMLLoader loaderHelpLevel = new FXMLLoader(getClass().getResource("/app/practice/mode/Mode.fxml"));
         Parent parent = loaderHelpLevel.load();
         modeController = loaderHelpLevel.getController();
         views.getChildren().add(parent);
@@ -399,12 +399,11 @@ public class PracticeController implements Initializable {
             supportAP.setVisible(false);
         }
         if (currentIndex >= dataPracticeVT.size()) {
-            ca.alertSuccessMessage("Done");
             setVisibleElements(doneVB, startAP, playAP);
             resultDoneLB.setText("Đúng: " + numOfCorrectWords + "/" + numOfWords);
             float f = (float) numOfCorrectWords/numOfWords;
             if (f >= 1) {
-                resultDoneLB1.setText("Xuất sắc! Hãy tiếp tục giữ vững phong độ.");
+                resultDoneLB1.setText("Xuất sắc! Hãy tiếp tục giữ vững thành tích.");
             } else if (f >= 0.9) {
                 resultDoneLB1.setText("Rất tốt! Hãy tiếp tục cố gắng.");
             } else if (f >= 0.5){
@@ -414,12 +413,13 @@ public class PracticeController implements Initializable {
             }
             Player player = null;
             try {
-                player = new Player(new FileInputStream(new File("audio/lesson_complete.mp3")));
+                player = new Player(new FileInputStream(new File("E:\\Project1\\src\\app\\audio\\lesson_complete.mp3")));
                 player.play();
             } catch (JavaLayerException | FileNotFoundException e) {
                 e.printStackTrace();
             }
-            player.close();
+            if (player != null)
+                player.close();
             return;
         }
 
@@ -499,11 +499,16 @@ public class PracticeController implements Initializable {
         }
         else {
             if (level < 6) {
-                for (int i = 0; i < word.length(); i++) {
+                int i = 0;
+                for (; i < Math.min(word.length(), answer.length()); i++) {
                     if (answer.charAt(i) != word.charAt(i)) {
                         answerArr.get(i).setIncorrect();
                         flag = false;
                     }
+                }
+                for (; i < word.length(); i++) {
+                    answerArr.get(i).setIncorrect();
+                    flag = false;
                 }
             }
             else {
@@ -526,6 +531,7 @@ public class PracticeController implements Initializable {
         if (flag) {
             setVisibleElements(correctHB, checkHB, incorrectHB);
             numOfCorrectWords++;
+            currentIW.decreaseNumOfFail();
 //                player = new Player(new FileInputStream(new File("audio/right_answer.mp3")));
 //                player.play();
         } else {
@@ -570,7 +576,7 @@ public class PracticeController implements Initializable {
             rs.close();
             pstm.close();
         } catch (SQLException | JavaLayerException | IOException e) {
-            ca.alertErrorMessage("Error: " + e.getMessage());
+            ca.alertErrorMessage("Lỗi khi truy nhập audio!");
             e.printStackTrace();
         }
     }
@@ -590,7 +596,7 @@ public class PracticeController implements Initializable {
                 }
             });
         } catch (SQLException e) {
-            ca.alertErrorMessage("Xảy ra lỗi!\nError: " + e.getMessage());
+            ca.alertErrorMessage("Xảy ra lỗi trong quá trình cập nhật kết quả! Hãy thử khởi động lại.");
             e.printStackTrace();
         }
         setVisibleElements(startAP, playAP, doneVB);
@@ -631,10 +637,10 @@ public class PracticeController implements Initializable {
     void onShowGuide(ActionEvent event) {
         try {
             views.getChildren().clear();
-            Parent guide = FXMLLoader.load(getClass().getResource("./Guide.fxml"));
+            Parent guide = FXMLLoader.load(getClass().getResource("Guide.fxml"));
             views.getChildren().add(guide);
         } catch (IOException e) {
-            ca.alertErrorMessage("Error: " + e.getMessage());
+            ca.alertErrorMessage("Xảy ra lỗi khi load dữ liệu!");
             e.printStackTrace();
         }
     }

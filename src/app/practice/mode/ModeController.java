@@ -3,12 +3,10 @@ package app.practice.mode;
 import app.helpers.CheckAndAlert;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import org.apache.commons.lang3.StringUtils;
@@ -42,6 +40,9 @@ public class ModeController implements Initializable {
     @FXML
     private JFXDatePicker toDateJFXDP;
 
+    @FXML
+    private ChoiceBox numOfWords;
+
     public class Mode {
         private String hashTag;
         private int date;
@@ -49,6 +50,7 @@ public class ModeController implements Initializable {
         private int year;
         private LocalDate fromDate;
         private LocalDate toDate;
+        private int numOfWords;
 
         public Mode() {
             this.hashTag = "";
@@ -57,6 +59,7 @@ public class ModeController implements Initializable {
             this.year = -1;
             this.fromDate = null;
             this.toDate = null;
+            this.numOfWords = -1;
         }
 
         public LocalDate getFromDate() {
@@ -106,6 +109,14 @@ public class ModeController implements Initializable {
         public void setYear(int year) {
             this.year = year;
         }
+
+        public int getNumOfWords() {
+            return numOfWords;
+        }
+
+        public void setNumOfWords(int numOfWords) {
+            this.numOfWords = numOfWords;
+        }
     }
 
     private Mode mode;
@@ -114,16 +125,30 @@ public class ModeController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         ca = CheckAndAlert.getInstance();
         mode = new Mode();
+        setClassifyCB();
     }
 
     public Mode getMode() {
         return mode;
     }
 
+    private void setClassifyCB() {
+        numOfWords.getItems().addAll("All", 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60);
+        numOfWords.setValue("All");
+    }
+
     public String getSQL() {
-        String sql = "SELECT Information.word_id, word, mean, ipa, suggest, hashtag, classify, dateWord, fail FROM Information, Analysis " +
-                "WHERE Information.word_id= Analysis.analysisWord_id";
+        String sql;
         boolean changeSQL = false;
+
+        if (mode.numOfWords <= 0) {
+            sql = "SELECT Information.word_id, word, mean, ipa, suggest, hashtag, classify, dateWord, fail FROM Information, Analysis " +
+                    "WHERE Information.word_id= Analysis.analysisWord_id";
+        }
+        else {
+            sql = "SELECT TOP " + mode.getNumOfWords() + " Information.word_id, word, mean, ipa, suggest, hashtag, classify, dateWord, fail FROM Information, Analysis " +
+                    "WHERE Information.word_id= Analysis.analysisWord_id";
+        }
 
         if (!mode.hashTag.isEmpty()) {
             sql += " AND (hashtag LIKE \'%"+mode.getHashTag() +" %\' OR hashtag LIKE \'%" + mode.getHashTag() + "\')";
@@ -175,7 +200,7 @@ public class ModeController implements Initializable {
     }
 
     private boolean validation() {
-        String hashag = hashtagJFXTF.getText();
+        String hashtag = hashtagJFXTF.getText();
         int date = checkNumber(dateJFXTF.getText(), 1);
         int month = checkNumber(monthJFXTF.getText(), 2);
         int year = checkNumber(yearJFXTF.getText(), 3);
@@ -183,7 +208,7 @@ public class ModeController implements Initializable {
         LocalDate toDate = toDateJFXDP.getValue();
 
 
-        if (!hashag.isEmpty() && ca.isHashtagNotValid(hashag)) {
+        if (!hashtag.isEmpty() && ca.isHashtagNotValid(hashtag)) {
             ca.alertErrorMessage("Mỗi hash tag phải bắt đầu bằng '#', viết liền không dấu và cách nhau bằng khoảng trắng giữa các hash tag. Bao gồm các ký tự số, chữ cái và dấu gạch dưới (có ít nhất một chữ cái hoặc chữ số).");
             return false;
         }
@@ -218,12 +243,14 @@ public class ModeController implements Initializable {
             }
         }
 
-        mode.setHashTag(hashag);
+        mode.setHashTag(hashtag);
         mode.setYear(year);
         mode.setMonth(month);
         mode.setDate(date);
         mode.setFromDate(fromDate);
         mode.setToDate(toDate);
+        if (!numOfWords.getValue().toString().equals("All"))
+            mode.setNumOfWords((int)numOfWords.getValue());
 
         return true;
     }
@@ -243,6 +270,8 @@ public class ModeController implements Initializable {
         yearJFXTF.setText("");
         fromDateJFXDP.setValue(null);
         toDateJFXDP.setValue(null);
+        fromDateJFXDP.setDisable(false);
+        toDateJFXDP.setDisable(false);
     }
 
     @FXML

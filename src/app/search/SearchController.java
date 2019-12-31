@@ -143,7 +143,7 @@ public class SearchController implements Initializable {
             pstm.close();
 
         } catch (SQLException | IOException e) {
-            ca.alertErrorMessage("Error: " + e.getMessage());
+            ca.alertErrorMessage("Lỗi khi load dữ liệu!");
             e.printStackTrace();
         }
     }

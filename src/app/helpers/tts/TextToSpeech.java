@@ -27,7 +27,7 @@ public class TextToSpeech {
         Voices voices = textToSpeech.listVoices().execute().getResult();
     }
 
-    public void SoundCreator(String text) {
+    public boolean SoundCreator(String text) {
         Authenticator authenticator = new IamAuthenticator("h7y0x48i4pL8uh_jqJ_LKGEMjn5qkDiuG4esX-RGCf9s");
         com.ibm.watson.text_to_speech.v1.TextToSpeech service = new com.ibm.watson.text_to_speech.v1.TextToSpeech(authenticator);
 
@@ -41,10 +41,11 @@ public class TextToSpeech {
             InputStream is = service.synthesize(synthesizeOptions).execute().getResult();
             writeToFile(WaveUtils.reWriteWaveHeader(is), new File("audio.mp3"));
             is.close();
-
+            return true;
         } catch (IOException e) {
-            ca.alertErrorMessage("Tạo file thất bại!\nError: " + e.getMessage());
+            ca.alertErrorMessage("Tạo file phát âm không thành công! Hãy đảm bảo bạn đang kết nối Internet, kiểm tra lại đường truyền và khởi động lại.");
             e.printStackTrace();
+            return false;
         }
     }
 

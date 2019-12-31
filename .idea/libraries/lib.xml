@@ -2,6 +2,7 @@
   <library name="lib">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/lib" />
+      <root url="jar://$USER_HOME$/Desktop/sqljdbc4/sqljdbc4.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

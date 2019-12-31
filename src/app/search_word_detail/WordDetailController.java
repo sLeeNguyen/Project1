@@ -4,6 +4,7 @@ import app.helpers.CheckAndAlert;
 import app.helpers.HelpScene;
 import app.helpers.InformationWord;
 import app.helpers.database.DatabaseHandler;
+import app.helpers.tts.TextToSpeech;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -104,9 +105,9 @@ public class WordDetailController implements Initializable {
         fileImg = null;
         fileAudio = null;
         try {
-            imageDefault = new Image(new FileInputStream("src/images/noImage.png"));
+            imageDefault = new Image(new FileInputStream("E:\\Project1\\src\\app\\images\\noImage.png"));
         } catch (FileNotFoundException e) {
-            ca.alertErrorMessage("Error: " + e.getMessage());
+            ca.alertErrorMessage("Lỗi load ảnh!");
             e.printStackTrace();
         }
         isRootPaneDetail = true;
@@ -200,7 +201,7 @@ public class WordDetailController implements Initializable {
             ca.alertErrorMessage("Bạn cần nhập nghĩa của từ/cụm từ!");
             return;
         }
-        if (ca.isNotValid(ipa)) {
+        if (ca.isNotValid(ipa) && !ipa.isEmpty()) {
             ca.alertErrorMessage("Bạn cần nhập phiên âm!");
             return;
         }
@@ -243,7 +244,7 @@ public class WordDetailController implements Initializable {
             ca.alertSuccessMessage("Cập nhật thành công!");
 
         } catch (SQLException | FileNotFoundException e) {
-            ca.alertErrorMessage("Cập nhật không thành công! \nError: " + e.getMessage());
+            ca.alertErrorMessage("Cập nhật không thành công!");
             e.printStackTrace();
         }
     }
@@ -267,7 +268,7 @@ public class WordDetailController implements Initializable {
             hs.closeWindow((Stage) rootPaneDetail.getScene().getWindow());
 
         } catch (SQLException e) {
-            ca.alertErrorMessage("Error: " + e.getMessage());
+            ca.alertErrorMessage("Xóa thất bại! Hãy thử lại.");
             e.printStackTrace();
         }
     }
@@ -287,6 +288,9 @@ public class WordDetailController implements Initializable {
                         Player player = new Player(is);
                         player.play();
                     }
+                    else {
+                        ca.alertSuccessMessage("Không có audio!");
+                    }
                 }
             } else {
                     is = new FileInputStream(fileAudio);
@@ -295,8 +299,18 @@ public class WordDetailController implements Initializable {
             }
 
         } catch (JavaLayerException | SQLException | IOException e) {
-            ca.alertErrorMessage("Error: " + e.getMessage());
+            ca.alertErrorMessage("Lỗi khi load dữ liệu! Hãy thử khởi động lại.");
             e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void onUseTTS(ActionEvent event) {
+        TextToSpeech tts = TextToSpeech.getInstance();
+        boolean isSuccess = tts.SoundCreator(wordsTF.getText());
+        if (isSuccess) {
+            fileAudio = new File("audio.mp3");
+            ca.alertSuccessMessage("Tạo audio thành công!");
         }
     }
 

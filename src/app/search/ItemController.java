@@ -61,7 +61,10 @@ public class ItemController implements Initializable {
             InputStream is = null;
             if (rs.next()) {
                 is = rs.getBinaryStream(1);
-                if (is == null) return;
+                if (is == null) {
+                    ca.alertSuccessMessage("Không có audio! Hãy thêm file.");
+                    return;
+                }
                 Player player = new Player(is);
                 player.play();
             }
@@ -93,7 +96,7 @@ public class ItemController implements Initializable {
             }
 
         } catch (SQLException e) {
-            ca.alertErrorMessage("Error: " + e.getMessage());
+            ca.alertErrorMessage("Xóa thât bại! Hãy thử lại.");
             e.printStackTrace();
         }
     }

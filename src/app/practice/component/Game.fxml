@@ -10,7 +10,7 @@
    <children>
       <ImageView fitHeight="163.0" fitWidth="408.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/GAME.png" />
+            <Image url="@../../images/GAME.png" />
          </image>
          <effect>
             <DropShadow />

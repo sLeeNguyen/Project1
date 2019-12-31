@@ -121,7 +121,7 @@ public class AddWordController implements Initializable {
             return;
         }
         if (!ipa.matches("^/.+/$") && !ipa.isEmpty()) {
-            ca.alertErrorMessage("Phiên phải đặt giữa 2 dấu gạch chéo ('/')");
+            ca.alertErrorMessage("Phiên âm phải đặt giữa 2 dấu gạch chéo ('/')");
             return;
         }
         if (ca.isHashtagNotValid(hashTag)) {
@@ -149,7 +149,7 @@ public class AddWordController implements Initializable {
             }
             else {
                 String msg = "Bạn có muốn hệ thống tự động tạo file phát âm?";
-                if (ca.alertConfirmMessage(msg)) { // auto create audio file, save as audio.mp3 and load into database
+                if (ca.alertConfirmMessage(msg)) { // auto create udio file, save as audio.mp3 and load into database
                     tts.SoundCreator(word);
                     File fileTTS = new File("audio.mp3");
                     fis = new FileInputStream(fileTTS);
@@ -180,7 +180,7 @@ public class AddWordController implements Initializable {
             if (fis != null) fis.close();
 
         } catch (SQLException | IOException e) {
-            ca.alertErrorMessage("Thêm thất bại! \nError: " + e.getMessage());
+            ca.alertErrorMessage("Thêm thất bại! Bản ghi đã tồn tại hoặc có lỗi trong quá trình tạo file. Hãy đảm bảo kết nối mạng và thử lại!");
             e.printStackTrace();
         }
     }
@@ -210,7 +210,7 @@ public class AddWordController implements Initializable {
         FileChooser.ExtensionFilter audioFilter = new FileChooser.ExtensionFilter("Audio Files", "*.mp3", "*.wav");
         FileChooser fc = new FileChooser();
 
-        fc.setInitialDirectory(new File("./audio"));
+        fc.setInitialDirectory(new File("E:\\Project1\\src\\app\\audio"));
         fc.setTitle("Chọn file phát âm");
         fc.getExtensionFilters().add(audioFilter);
         fileAudio = fc.showOpenDialog(null);
@@ -226,7 +226,7 @@ public class AddWordController implements Initializable {
         FileChooser.ExtensionFilter imgFilter = new FileChooser.ExtensionFilter("Images Files", "*.jpg", "*.png", "*.jpeg", "*.ico");
         FileChooser fc = new FileChooser();
 
-        fc.setInitialDirectory(new File("./src/images"));
+        fc.setInitialDirectory(new File("E:\\Project1\\src\\app\\images"));
         fc.setTitle("Chọn hình ảnh");
         fc.getExtensionFilters().add(imgFilter);
         fileImg = fc.showOpenDialog(null);
@@ -246,7 +246,7 @@ public class AddWordController implements Initializable {
         if (fileImg != null) {
             image = new Image(fileImg.toURI().toString());
         } else {
-            image = new Image(new File("src/images/noImage.png").toURI().toString());
+            image = new Image(new File("E:\\Project1\\src\\app\\images\\noImage.png").toURI().toString());
         }
         imageView.setImage(image);
     }
@@ -267,7 +267,7 @@ public class AddWordController implements Initializable {
                 player.play();
                 music.close();
             } catch (JavaLayerException e) {
-                ca.alertErrorMessage("Error: " + e.getMessage());
+                ca.alertErrorMessage("Lỗi khi load audio!");
                 if (music != null) music.close();
                 e.printStackTrace();
             }

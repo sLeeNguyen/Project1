@@ -1,0 +1,15 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Project1:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Project1_jar</output-path>
+    <root id="archive" name="Project1.jar">
+      <element id="module-output" name="Project1" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jl1.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jfoenix-8.0.8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/fontawesomefx-8.9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/ibm-watson-8.0.0-jar-with-dependencies.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../Help_JavaFX/fontawesomefx-8.9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Desktop/sqljdbc4/sqljdbc4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../Help_JavaFX/jfoenix-8.0.8.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

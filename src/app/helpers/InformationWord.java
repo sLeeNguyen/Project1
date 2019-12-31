@@ -114,4 +114,10 @@ public class InformationWord {
     public int increaseNumOfFail() {
         return ++numOfFail;
     }
+
+    public int decreaseNumOfFail() {
+        if (numOfFail > 0)
+            return --numOfFail;
+        return 0;
+    }
 }
